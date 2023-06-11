@@ -10,12 +10,13 @@ function App() {
   const [selectedCountries, setSelectedCountries] = useState([]);
 
   useEffect(() => {
-    getGenderOfPeopleDataFromDB();
-    getCountryOfPeopleDataFromDB();
+    getDataOfPeopleFromDB();
   }, []);
 
-  const getGenderOfPeopleDataFromDB = async () => {
+  const getDataOfPeopleFromDB = async () => {
+    /// get data from database ///
     const response = await axios.get("http://localhost:4000/people");
+    /// seperate gender ///
     const filterGender = response.data.data.reduce((accumulate, currentGender) => {
       accumulate.add(currentGender.gender);
       return accumulate;
@@ -23,10 +24,8 @@ function App() {
 
     const uniqueGenders = [...filterGender];
     setGender(uniqueGenders);
-  };
 
-  const getCountryOfPeopleDataFromDB = async () => {
-    const response = await axios.get("http://localhost:4000/people");
+    /// seperate country ///
     const filterCountry = response.data.data.reduce((accumulate, currentCountry) => {
       accumulate.add(currentCountry.country);
       return accumulate;
@@ -86,6 +85,7 @@ function App() {
             </button>
           );
         })}
+        
       </div>
     </div>
   );
