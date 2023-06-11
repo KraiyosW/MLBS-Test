@@ -6,8 +6,10 @@ import axios from "axios";
 function App() {
   const [gender, setGender] = useState([]);
   const [country, setCountry] = useState([]);
+  const [allData,setAllData] = useState([])
   const [selectedGenders, setSelectedGenders] = useState([]);
   const [selectedCountries, setSelectedCountries] = useState([]);
+  const [keywords,setKeywords] = useState("")
 
   useEffect(() => {
     getDataOfPeopleFromDB();
@@ -33,6 +35,10 @@ function App() {
 
     const uniqueCountry = [...filterCountry];
     setCountry(uniqueCountry);
+
+    /// get all data for generate card //
+    const getAllDataOfPeople = response.data.data
+    setAllData(getAllDataOfPeople)
   };
 
   const handleGenderClick = (item) => {
@@ -76,7 +82,7 @@ function App() {
           return (
             <button
               className={`w-[120px] h-[60px] mr-[2rem] rounded-[5px] text-gray-50 ${
-                isSelected ? "bg-fuchsia-500" : "bg-violet-400"
+                isSelected ? "bg-green-500" : "bg-sky-400"
               } text-text-pink-700`}
               key={index}
               onClick={() => handleCountryClick(item)}
@@ -87,7 +93,37 @@ function App() {
         })}
         
       </div>
-    </div>
+      <div className="container">
+        <form className="flex flex-row items-center">
+          <input
+            className="w-[200px] h-[60px] flex flex-row justify-center rounded-[5px] mr-2 border-violet-600"
+            id="keywords-text"
+            name="keywordsText"
+            placeholder="Search"
+            // onChange={}
+            // value={}
+          />
+          <button className="text-cyan-400 hover:text-rose-600">CLEAR</button>
+        </form>
+        </div>
+        <div className="w-90 flex flex-row items-start flex-wrap ml-[13rem]">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {allData.map((item,index)=>{
+            
+            return(
+             <div className="w-[350px] h-[400px] flex flex-col items-center shadow-md bg-white">
+                  <img className="w-[350px] h-[250px]" src={item.image}/>
+                  <p className="text-gray-600 opacity-[0.7] mt-3">{item.first_name} {item.last_name}</p>
+                  <p className="text-gray-600 opacity-[1] mt-1">{item.gender}</p>
+                  <p className="text-gray-600 opacity-[1] mt-1">{item.email}</p>
+                  <p className="text-gray-600 opacity-[1] mt-1">{item.country}</p>
+                </div>
+
+            );
+          })}
+               </div>
+            </div>
+          </div>
   );
 }
 
