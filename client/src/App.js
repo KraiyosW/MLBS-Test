@@ -58,7 +58,7 @@ function App() {
   };
 
   return (
-    <div className="w-screen h-screen flex flex-col bg-gradient-to-b from-red-500 via-yellow-500 to-blue-500">
+    <div className="w-screen h-screen flex flex-col bg-[#EFC8EE]">
       <h1 className="mt-[16px] text-center text-[4rem] text-white font-bold">People Data</h1>
       <div className="flex flex-row flex-wrap justify-center mt-[2rem]">
         {gender.map((item, index) => {
@@ -94,7 +94,7 @@ function App() {
         
       </div>
       <div className="container">
-        <form className="flex flex-row items-center">
+        <form className="flex flex-row items-center ">
           <input
             className="w-[200px] h-[60px] flex flex-row justify-center rounded-[5px] mr-2 border-violet-600"
             id="keywords-text"
@@ -106,7 +106,7 @@ function App() {
           <button className="text-cyan-400 hover:text-rose-600">CLEAR</button>
         </form>
         </div>
-        <div className="w-90 flex flex-row items-start flex-wrap ml-[13rem]">
+        <div className="w-90 flex flex-row items-start flex-wrap pl-[13rem]  bg-[#EFC8EE]">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {allData.map((item,index)=>{
             
