@@ -15,4 +15,10 @@
   justify-content: center;
   margin-top: 3rem;
   margin-bottom: 3rem;
+  background-color: #EFC8EE;
+}
+.container1 {
+  display: flex;
+  justify-content: center;
+  background-color: #EFC8EE;
 }
