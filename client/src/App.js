@@ -111,12 +111,12 @@ function App() {
   return (
     <div className="w-screen h-screen flex flex-col bg-[#EFC8EE]">
       <h1 className="mt-[16px] text-center text-[4rem] text-white font-bold">People Data</h1>
-      <div className="flex flex-row flex-wrap justify-center mt-[2rem]">
+      <div className="flex flex-row flex-wrap justify-center mt-[32px]">
         {gender.map((item, index) => {
           const isSelected = selectedGenders.includes(item);
           return (
             <button
-              className={`w-[120px] h-[60px] mr-[2rem] rounded-[5px] text-gray-50 ${
+              className={`w-[120px] h-[60px] mr-[32px] rounded-[5px] text-gray-50 ${
                 isSelected ? "bg-fuchsia-500" : "bg-violet-400"
               } text-text-pink-700`}
               key={index}
@@ -127,12 +127,12 @@ function App() {
           );
         })}
       </div>
-      <div className="flex flex-row flex-wrap justify-center mt-[2rem]">
+      <div className="flex flex-row flex-wrap justify-center mt-[32px]">
         {country.map((item, index) => {
           const isSelected = selectedCountries.includes(item);
           return (
             <button
-              className={`w-[120px] h-[60px] mr-[2rem] rounded-[5px] text-gray-50 ${
+              className={`w-[120px] h-[60px] mr-[32px] rounded-[5px] text-gray-50 ${
                 isSelected ? "bg-green-500" : "bg-sky-400"
               } text-text-pink-700`}
               key={index}
@@ -144,9 +144,9 @@ function App() {
         })}
       </div>
       <div className="container">
-        <form className="flex flex-row items-center">
+        <form className=" w-auto flex flex-row items-center">
           <input
-            className="w-[200px] h-[60px] flex flex-row justify-center border-solid rounded-[5px] mr-2 border-violet-600"
+            className="w-[200px] h-[60px] flex flex-row items-center border-solid rounded-[5px] mr-[5px] border-violet-600"
             id="keywords-text"
             name="keywordsText"
             placeholder="Search"
@@ -156,25 +156,27 @@ function App() {
           <button className="text-cyan-400 hover:text-rose-600" onClick={handleClearFilter}>CLEAR</button>
         </form>
       </div>
-      <div className="w-90 flex flex-row items-start flex-wrap pl-[13rem] bg-[#EFC8EE]">
-        {filteredData.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {filteredData.map((item, index) => {
-              return (
-                <div className="w-[350px] h-[400px] flex flex-col items-center shadow-md bg-white" key={index}>
-                  <img className="w-[350px] h-[250px]" src={item.image} alt={`${item.first_name} ${item.last_name}`} />
-                  <p className="text-gray-600 opacity-70 mt-3">{item.first_name} {item.last_name}</p>
-                  <p className="text-gray-600 opacity-100 mt-1">{item.gender}</p>
-                  <p className="text-gray-600 opacity-100 mt-1">{item.email}</p>
-                  <p className="text-gray-600 opacity-100 mt-1">{item.country}</p>
-                </div>
-              );
-            })}
-          </div>
-        ) : (
-          <p className="text-center text-gray-600 mt-4">No matching results found.</p>
-        )}
-      </div>
+       <div className="container1">
+        <div className="w-90 flex flex-row items-center flex-wrap  bg-[#EFC8EE]">
+          {filteredData.length > 0 ? (
+            <div className="grid grid-cols-1 items-center md:grid-cols-3 gap-4">
+              {filteredData.map((item, index) => {
+                return (
+                  <div className="w-[350px] h-[400px] flex flex-col items-center shadow-md bg-white" key={index}>
+                    <img className="w-[350px] h-[250px]" src={item.image} alt={`${item.first_name} ${item.last_name}`} />
+                    <p className="text-gray-600 opacity-70 mt-3">{item.first_name} {item.last_name}</p>
+                    <p className="text-gray-600 opacity-100 mt-1">{item.gender}</p>
+                    <p className="text-gray-600 opacity-100 mt-1">{item.email}</p>
+                    <p className="text-gray-600 opacity-100 mt-1">{item.country}</p>
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            <p className="text-center text-gray-600 mt-4">No matching results found.</p>
+          )}
+         </div>
+        </div> 
       <div className="flex justify-center pt-4 bg-[#EFC8EE]">
           <button
             className="px-4 py-2 bg-gray-200 text-gray-600 rounded-md mr-2"
